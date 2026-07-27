@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "young-glade-3b4a",
+  "compatibility_date": "2026-07-27",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "needham-nest-site_2"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
