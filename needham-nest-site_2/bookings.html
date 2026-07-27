@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Bookings &middot; The Needham Nest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#17443F;--green-dk:#0F312D;--gold:#E6A251;--cream:#F7F0E0;--ink:#2A2622;--muted:#8a8175;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Lora',Georgia,serif;background:var(--green-dk);color:var(--cream);line-height:1.5;min-height:100vh;padding:18px}
+  .wrap{max-width:780px;margin:0 auto}
+  header{text-align:center;padding:14px 0 20px}
+  header img{width:54px;height:54px;margin:0 auto 8px;display:block}
+  header h1{font-family:'Playfair Display',serif;font-weight:700;font-size:1.5rem;color:var(--cream)}
+  header .sub{font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-top:4px}
+
+  .card{background:rgba(247,240,224,.05);border:1px solid rgba(230,162,81,.3);border-radius:6px;padding:22px;max-width:380px;margin:30px auto}
+  .card label{display:block;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+  input[type=password]{width:100%;padding:13px 14px;border-radius:3px;border:1px solid rgba(230,162,81,.4);background:var(--cream);color:var(--ink);font-family:inherit;font-size:1rem}
+  .btn{display:block;width:100%;margin-top:14px;padding:13px;border:0;border-radius:3px;background:var(--gold);color:var(--green-dk);font-family:'Playfair Display',serif;font-weight:600;font-size:1rem;cursor:pointer;transition:background .15s}
+  .btn:hover{background:#efb066}
+  .btn.ghost{background:transparent;border:1px solid rgba(230,162,81,.5);color:var(--gold)}
+  .err{color:#f0a3a3;font-size:.9rem;margin-top:10px;min-height:1.2em;text-align:center}
+
+  .bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:8px 0 18px}
+  .stat{flex:1;min-width:120px;background:rgba(247,240,224,.06);border:1px solid rgba(230,162,81,.25);border-radius:6px;padding:14px;text-align:center}
+  .stat b{display:block;font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--gold)}
+  .stat span{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+  .tools{display:flex;gap:10px;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+  .tools .filter{display:flex;gap:6px}
+  .chip{font-size:.8rem;padding:7px 14px;border-radius:30px;border:1px solid rgba(230,162,81,.4);color:var(--cream);background:transparent;cursor:pointer}
+  .chip.on{background:var(--gold);color:var(--green-dk);border-color:var(--gold)}
+  .refresh{font-size:.85rem;color:var(--gold);background:none;border:0;cursor:pointer}
+
+  .b{background:rgba(247,240,224,.06);border:1px solid rgba(230,162,81,.22);border-left:3px solid var(--gold);border-radius:4px;padding:14px 16px;margin-bottom:10px}
+  .b.pending{border-left-color:var(--muted);opacity:.75}
+  .b .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .b .name{font-family:'Playfair Display',serif;font-weight:600;font-size:1.15rem;color:var(--cream)}
+  .b .slot{font-weight:600;color:var(--gold)}
+  .b .meta{font-size:.9rem;color:rgba(247,240,224,.85);margin-top:4px}
+  .b .meta a{color:var(--gold);text-decoration:none}
+  .b .order{margin-top:6px;font-size:.95rem}
+  .b .badge{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:20px;font-weight:600}
+  .b .badge.paid{background:rgba(134,185,129,.2);color:#a7d3a1}
+  .b .badge.pending{background:rgba(230,162,81,.15);color:var(--gold)}
+  .b .notes{margin-top:8px;font-style:italic;font-size:.9rem;color:rgba(247,240,224,.7);border-top:1px dotted rgba(230,162,81,.2);padding-top:8px}
+  .empty{text-align:center;color:var(--muted);padding:30px;font-style:italic}
+  #app{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="assets/logo.png" alt="The Needham Nest">
+    <h1>Smash Burger Night</h1>
+    <div class="sub">Bookings</div>
+  </header>
+
+  <div id="login" class="card">
+    <label for="pw">Staff password</label>
+    <input type="password" id="pw" autocomplete="off" placeholder="Enter password">
+    <button class="btn" id="go">View bookings</button>
+    <div class="err" id="err"></div>
+  </div>
+
+  <div id="app">
+    <div class="bar" id="stats"></div>
+    <div class="tools">
+      <div class="filter">
+        <button class="chip on" data-f="all">All</button>
+        <button class="chip" data-f="paid">Paid only</button>
+      </div>
+      <button class="refresh" id="refresh">&#8635; Refresh</button>
+    </div>
+    <div id="list"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var FN="https://ocjdwtbvdqedpeheiwfc.supabase.co/functions/v1/bookings-list";
+  var KEY="sb_publishable_2Hl1eX1_AV_6fcxfGC6hhg_CQ9undAD";
+  var pw="", data=[], filter="all";
+
+  var login=document.getElementById("login"), app=document.getElementById("app"), err=document.getElementById("err");
+
+  function money(p){ return "\u00A3"+((p||0)/100).toFixed(2); }
+  function esc(s){ return String(s==null?"":s).replace(/[<>&]/g,function(c){return {"<":"&lt;",">":"&gt;","&":"&amp;"}[c];}); }
+
+  function load(){
+    err.textContent="Loading\u2026";
+    fetch(FN,{method:"POST",headers:{"Content-Type":"application/json","apikey":KEY},body:JSON.stringify({password:pw})})
+      .then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
+      .then(function(res){
+        if(!res.ok || !res.d.ok){ throw new Error(res.d && res.d.error ? res.d.error : "Could not load."); }
+        data=res.d.bookings||[];
+        login.style.display="none"; app.style.display="block"; err.textContent="";
+        render();
+      })
+      .catch(function(e){ err.textContent=e.message||"Something went wrong."; });
+  }
+
+  function render(){
+    var rows = filter==="paid" ? data.filter(function(b){return b.payment_status==="paid";}) : data;
+    // stats (paid only)
+    var paid = data.filter(function(b){return b.payment_status==="paid";});
+    var burgers=0, revenue=0;
+    paid.forEach(function(b){ var o=b.order_items||{}; burgers += (o.smashed||0)+(o.double||0); revenue += b.amount_pence||0; });
+    document.getElementById("stats").innerHTML =
+      '<div class="stat"><b>'+paid.length+'</b><span>Paid bookings</span></div>'+
+      '<div class="stat"><b>'+burgers+'</b><span>Burgers</span></div>'+
+      '<div class="stat"><b>'+money(revenue)+'</b><span>Taken</span></div>';
+
+    var list=document.getElementById("list");
+    if(rows.length===0){ list.innerHTML='<div class="empty">No bookings yet.</div>'; return; }
+    list.innerHTML = rows.map(function(b){
+      var o=b.order_items||{};
+      var items=[];
+      if(o.smashed) items.push("Smashed \u00D7"+o.smashed);
+      if(o.double) items.push("Double \u00D7"+o.double);
+      var paidCls=b.payment_status==="paid";
+      return '<div class="b '+(paidCls?"":"pending")+'">'+
+        '<div class="top"><span class="name">'+esc(b.customer_name)+'</span>'+
+        '<span class="slot">'+esc(String(b.booking_time||"").slice(0,5))+'</span></div>'+
+        '<div class="meta"><a href="tel:'+esc(b.phone)+'">'+esc(b.phone)+'</a> &nbsp;\u00B7&nbsp; party of '+esc(b.party_size)+
+        ' &nbsp; <span class="badge '+(paidCls?"paid":"pending")+'">'+(paidCls?"Paid "+money(b.amount_pence):"Unpaid")+'</span></div>'+
+        '<div class="order">'+(items.join(" &nbsp;\u00B7&nbsp; ")||"\u2014")+'</div>'+
+        (b.notes?'<div class="notes">'+esc(b.notes)+'</div>':'')+
+        '</div>';
+    }).join("");
+  }
+
+  document.getElementById("go").addEventListener("click",function(){ pw=document.getElementById("pw").value; if(pw) load(); });
+  document.getElementById("pw").addEventListener("keydown",function(e){ if(e.key==="Enter"){ pw=this.value; if(pw) load(); } });
+  document.getElementById("refresh").addEventListener("click",load);
+  document.querySelectorAll(".chip").forEach(function(c){ c.addEventListener("click",function(){
+    document.querySelectorAll(".chip").forEach(function(x){x.classList.remove("on");});
+    c.classList.add("on"); filter=c.getAttribute("data-f"); render();
+  });});
+})();
+</script>
+</body>
+</html>
