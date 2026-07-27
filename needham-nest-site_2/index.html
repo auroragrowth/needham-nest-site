@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Needham Nest · Coffee · Cake · Community · Needham Market</title>
+<meta name="description" content="The Needham Nest — a warm café in the Old Town Hall, Needham Market, Suffolk. Barista coffee, jacket potatoes, panini, crêpes, bubble waffles, ice cream and pick &amp; mix. Open 8am–4pm, seven days a week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#17443F;--green-deep:#0F312D;--gold:#E6A251;--gold-soft:#D9954A;
+    --cream:#F7F0E0;--cream-warm:#EFE6D2;--ink:#2A2522;--line:rgba(230,162,81,.35);
+    --maxw:1140px;--serif:"Playfair Display",Georgia,serif;--body:"Lora",Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);color:var(--ink);background:var(--cream);line-height:1.7;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  h1,h2,h3,.serif{font-family:var(--serif)}
+  .eyebrow{text-transform:uppercase;letter-spacing:.32em;font-size:.72rem;font-weight:600;color:var(--gold-soft)}
+  .flourish{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--gold)}
+  .flourish::before,.flourish::after{content:"";height:1px;width:60px;background:linear-gradient(90deg,transparent,var(--gold))}
+  .flourish::after{background:linear-gradient(90deg,var(--gold),transparent)}
+  .flourish span{font-size:1.05rem;line-height:1}
+
+  header.bar{position:sticky;top:0;z-index:50;background:rgba(247,240,224,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .bar-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{width:48px;height:48px;flex:none}
+  .brand .name{font-family:var(--serif);font-weight:700;font-size:1.18rem;color:var(--green);line-height:1}
+  .brand .name small{display:block;font-family:var(--body);font-weight:500;font-size:.62rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-soft);margin-top:3px}
+  nav.main{display:flex;align-items:center;gap:30px}
+  nav.main a{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--green);transition:color .2s}
+  nav.main a:hover{color:var(--gold-soft)}
+  .navcta{border:1px solid var(--green);border-radius:2px;padding:9px 16px !important;color:var(--green)}
+  .navcta:hover{background:var(--green);color:var(--cream) !important}
+  .navtoggle{display:none;background:none;border:1px solid var(--green);border-radius:2px;width:42px;height:38px;cursor:pointer}
+  .navtoggle span{display:block;width:18px;height:2px;background:var(--green);margin:3px auto}
+
+  .hero{position:relative;color:var(--cream);text-align:center;overflow:hidden;
+    background-image:linear-gradient(180deg,rgba(15,49,45,.86),rgba(15,49,45,.93)),url('assets/hero.jpg');
+    background-size:cover;background-position:center}
+  .hero-inner{max-width:760px;margin:0 auto;padding:84px 24px 92px;position:relative}
+  .corner{position:absolute;width:52px;height:52px;border:2px solid var(--gold);opacity:.7}
+  .corner.tl{top:24px;left:24px;border-right:0;border-bottom:0}
+  .corner.tr{top:24px;right:24px;border-left:0;border-bottom:0}
+  .corner.bl{bottom:24px;left:24px;border-right:0;border-top:0}
+  .corner.br{bottom:24px;right:24px;border-left:0;border-top:0}
+  .hero .roundel{width:116px;height:116px;margin:0 auto 24px;filter:drop-shadow(0 4px 14px rgba(0,0,0,.35))}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.2rem);font-weight:700;line-height:1.05;margin:0 0 8px;color:var(--cream)!important}
+  .hero .tagline{font-family:var(--body);font-style:italic;font-size:1.18rem;color:var(--gold);margin-bottom:24px}
+  .hero p.lead{font-size:1.06rem;color:rgba(247,240,224,.88);max-width:540px;margin:0 auto 30px}
+  .hero .eyebrow{color:var(--gold);margin-bottom:18px}
+  .status{display:inline-flex;align-items:center;gap:10px;background:rgba(15,49,45,.5);border:1px solid var(--line);border-radius:40px;padding:9px 20px;font-size:.86rem;margin-bottom:28px}
+  .status .dot{width:9px;height:9px;border-radius:50%;background:#86B981}
+  .status.open .dot{animation:pulse 2.4s infinite}
+  .status.closed .dot{background:var(--gold)}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(134,185,129,.55)}70%{box-shadow:0 0 0 9px rgba(134,185,129,0)}100%{box-shadow:0 0 0 0 rgba(134,185,129,0)}}
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 28px;border-radius:2px;font-family:var(--body);font-weight:600;font-size:.92rem;letter-spacing:.06em;transition:all .2s;cursor:pointer;border:1px solid transparent}
+  .btn-gold{background:var(--gold);color:var(--green-deep)}
+  .btn-gold:hover{background:#efb066}
+  .btn-ghost{border-color:rgba(247,240,224,.5);color:var(--cream)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .hero-meta{margin-top:32px;display:flex;gap:30px;justify-content:center;flex-wrap:wrap;font-size:.84rem;color:rgba(247,240,224,.78)}
+  .hero-meta b{color:var(--cream);font-weight:600}
+
+  section{padding:84px 0}
+  .sec-head{text-align:center;margin-bottom:46px}
+  .sec-head h2{font-size:clamp(1.9rem,4vw,2.7rem);color:var(--green)!important;font-weight:700;margin:14px 0 0}
+  @keyframes nnrise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  .reveal.in{animation:nnrise .7s ease both}
+
+  .event-band{background:var(--gold);padding:0}
+  .event-band .wrap{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:24px;flex-wrap:wrap}
+  .event-band .ev-eyebrow{text-transform:uppercase;letter-spacing:.26em;font-size:.68rem;font-weight:700;color:var(--green-deep);opacity:.85}
+  .event-band h2{font-family:var(--serif);font-size:clamp(1.5rem,3.2vw,2rem);color:var(--green-deep)!important;font-weight:700;margin:5px 0 3px;line-height:1.05}
+  .event-band .ev-detail{font-size:.96rem;color:var(--green-deep)}
+  .event-band .ev-cta{display:inline-block;background:var(--green);color:var(--cream);padding:14px 28px;border-radius:3px;font-family:var(--body);font-weight:600;font-size:.95rem;letter-spacing:.03em;white-space:nowrap;transition:background .2s,transform .2s}
+  .event-band .ev-cta:hover{background:var(--green-deep);transform:translateY(-2px)}
+  @media (max-width:560px){.event-band .wrap{flex-direction:column;text-align:center}.event-band .ev-cta{width:100%}}
+  .welcome{background:var(--cream-warm)}
+  .welcome .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .welcome p{font-size:1.1rem;margin-bottom:16px;color:#41382f}
+  .welcome .sig{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--green);margin-top:22px}
+  .welcome .sig small{display:block;font-family:var(--body);font-style:normal;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-soft);margin-top:6px}
+  .welcome .photo{position:relative;border-radius:4px;overflow:hidden;box-shadow:0 18px 40px rgba(23,68,63,.22)}
+  .welcome .photo img{width:100%;height:100%;object-fit:cover}
+  .welcome .photo .frame{position:absolute;inset:14px;border:1px solid rgba(247,240,224,.5);pointer-events:none}
+
+  .gallery{background:var(--cream)}
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .gal-grid figure{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:1}
+  .gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .gal-grid figure:hover img{transform:scale(1.06)}
+  .gal-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 12px;color:var(--cream);font-size:.84rem;letter-spacing:.04em;background:linear-gradient(transparent,rgba(15,49,45,.82))}
+
+  .menu .menu-cols{column-count:3;column-gap:24px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:3px;padding:26px 26px;margin:0 0 24px;break-inside:avoid;-webkit-column-break-inside:avoid}
+  .card .kicker{font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-soft);font-weight:600;display:block;margin-bottom:8px}
+  .card h3{font-size:1.3rem;color:var(--green)!important;font-weight:700;display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:6px}
+  .card h3 .cprice{font-family:var(--body);font-style:italic;font-weight:500;font-size:.92rem;color:var(--gold-soft);white-space:nowrap}
+  .card .cintro{font-style:italic;font-size:.88rem;color:#7a7165;margin-bottom:12px}
+  .card ul{list-style:none}
+  .mli{display:flex;align-items:baseline;padding:6px 0;font-size:.97rem;color:#43403a}
+  .mli .i{white-space:nowrap}
+  .mli.np{padding:4px 0}
+  .mli .note{color:#9a9185;font-style:italic;font-size:.82rem;white-space:normal}
+  .mli .dots{flex:1;margin:0 6px;border-bottom:1px dotted rgba(42,37,34,.28);transform:translateY(-3px)}
+  .mli .p{color:var(--green);font-weight:500;white-space:nowrap}
+  .addon{margin-top:14px;padding:10px 14px;background:var(--cream);border:1px solid var(--line);border-radius:3px;font-size:.82rem;color:#5f574c}
+  .menu-note{text-align:center;margin-top:36px;font-style:italic;color:#6f665b;font-size:.96rem}
+  .kitchen-note{max-width:760px;margin:0 auto 42px;text-align:center;background:#fff;border:1px solid var(--line);border-radius:3px;padding:20px 30px;font-size:1rem;color:#4a4137;line-height:1.65}
+  .kitchen-note strong{font-family:var(--serif);color:var(--green);font-weight:700;font-size:1.1rem}
+  .kitchen-note .star{color:var(--gold)}
+  .hours-note{margin-top:14px;font-size:.92rem;font-style:italic;color:rgba(247,240,224,.78)}
+  .allergen{max-width:820px;margin:30px auto 0;background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:3px;padding:22px 30px;text-align:left}
+  .allergen .kicker{display:block;font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-soft);font-weight:600;margin-bottom:9px}
+  .allergen p{font-size:.92rem;color:#4a4137;line-height:1.7;margin:0}
+  .dl-btn{display:inline-flex;align-items:center;gap:9px;margin-top:16px;padding:11px 22px;border-radius:3px;background:var(--green);color:var(--cream);font-family:var(--body);font-weight:600;font-size:.9rem;letter-spacing:.03em;transition:background .2s,transform .2s}
+  .dl-btn:hover{background:var(--green-deep);transform:translateY(-2px)}
+  .dl-btn svg{width:18px;height:18px;fill:var(--gold)}
+
+  .split{background:var(--green);color:var(--cream)}
+  .split .grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+  .split h2{color:var(--cream)!important;font-size:clamp(1.7rem,3.5vw,2.4rem);margin-bottom:8px}
+  .split .eyebrow{color:var(--gold)}
+  .hours-list{margin-top:22px}
+  .hours-list .row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(247,240,224,.16);font-size:1rem}
+  .hours-list .row.now{color:var(--gold)}
+  .hours-list .row b{font-weight:500}
+  .open-banner{margin-top:22px;display:inline-flex;align-items:center;gap:10px;font-size:.95rem;color:var(--gold)}
+  .find address{font-style:normal;font-size:1.08rem;line-height:1.9;color:rgba(247,240,224,.9);margin:18px 0}
+  .find .tip{background:rgba(230,162,81,.1);border-left:2px solid var(--gold);padding:14px 18px;border-radius:0 3px 3px 0;font-size:.92rem;color:rgba(247,240,224,.85);font-style:italic;margin-bottom:22px}
+  .find .visit-note{font-size:.9rem;font-style:italic;color:rgba(247,240,224,.78);line-height:1.6;margin-bottom:22px}
+  .find .contact-row{display:flex;flex-direction:column;gap:8px;font-size:1rem;margin-bottom:24px}
+  .find .contact-row a:hover{color:var(--gold)}
+  .find .contact-row .lbl{color:var(--gold-soft);text-transform:uppercase;letter-spacing:.16em;font-size:.68rem;font-weight:600;margin-right:6px}
+
+  footer{background:var(--green-deep);color:rgba(247,240,224,.78);text-align:center;padding:54px 24px 40px}
+  footer .roundel{width:66px;height:66px;margin:0 auto 18px}
+  .hygiene{display:inline-flex;align-items:center;gap:14px;border:1px solid rgba(230,162,81,.4);border-radius:8px;padding:12px 20px;margin:0 auto 24px;text-align:left}
+  .hygiene .score{width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--green-deep);font-family:var(--serif);font-weight:700;font-size:1.6rem;display:flex;align-items:center;justify-content:center;flex:none}
+  .hygiene .txt{display:flex;flex-direction:column;line-height:1.3}
+  .hygiene .txt strong{font-family:var(--serif);color:var(--cream);font-size:1rem;font-weight:700}
+  .hygiene .txt span{font-size:.76rem;color:rgba(247,240,224,.72)}
+  .hygiene-img{display:inline-block;background:#fff;padding:10px;border-radius:8px;margin:0 auto 24px;box-shadow:0 8px 22px rgba(0,0,0,.25)}
+  .hygiene-img img{display:block;width:auto;max-width:230px;height:auto;border-radius:3px}
+  footer .fname{font-family:var(--serif);font-size:1.3rem;color:var(--cream);font-weight:700}
+  footer .ftag{font-style:italic;color:var(--gold);margin:4px 0 20px}
+  footer address{font-style:normal;font-size:.9rem;line-height:1.8;margin-bottom:18px}
+  footer .social{display:flex;gap:18px;justify-content:center;margin-bottom:24px}
+  footer .social a{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(230,162,81,.4);border-radius:30px;padding:7px 16px;transition:all .2s}
+  footer .social a:hover{border-color:var(--gold);color:var(--gold)}
+  footer .legal{font-size:.74rem;color:rgba(247,240,224,.45);border-top:1px solid rgba(247,240,224,.1);padding-top:20px;max-width:620px;margin:0 auto}
+
+  .follow{background:var(--cream-warm);text-align:center}
+  .follow .lead{max-width:560px;margin:14px auto 30px;font-size:1.08rem;color:#4a4137}
+  .social-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .sbtn{display:inline-flex;align-items:center;gap:11px;padding:14px 26px;border-radius:3px;font-family:var(--body);font-weight:600;font-size:.95rem;letter-spacing:.03em;cursor:pointer;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s,color .2s}
+  .sbtn svg{width:22px;height:22px;flex:none}
+  .sbtn.solid{background:var(--green);color:var(--cream)}
+  .sbtn.solid svg{fill:var(--gold)}
+  .sbtn.solid:hover{background:var(--green-deep);transform:translateY(-2px);box-shadow:0 10px 24px rgba(23,68,63,.22)}
+  .sbtn.ghost{border-color:var(--green);color:var(--green);background:transparent}
+  .sbtn.ghost svg{fill:var(--green)}
+  .sbtn.ghost:hover{background:var(--green);color:var(--cream);transform:translateY(-2px)}
+  .sbtn.ghost:hover svg{fill:var(--gold)}
+  .handle{display:block;margin-top:22px;font-style:italic;color:var(--gold-soft);font-size:.95rem;letter-spacing:.04em}
+  .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--green-deep);color:var(--cream);padding:12px 22px;border-radius:30px;font-size:.9rem;border:1px solid var(--line);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:100}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* full screen: force whichever Elementor container is in use to fill edge-to-edge,
+     without the 100vw trick that caused the scrollbar sliver. */
+  html,body{overflow-x:hidden;}
+  .elementor-section>.elementor-container,.e-con,.e-con-inner{max-width:100%!important;width:100%!important}
+  .elementor-widget-html>.elementor-widget-container,.elementor-widget-wrap,.elementor-element-populated,.e-con,.e-con-inner{padding-left:0!important;padding-right:0!important}
+
+  @media (max-width:900px){.menu .menu-cols{column-count:2}}
+  @media (max-width:860px){
+    .welcome .grid{grid-template-columns:1fr;gap:36px}
+    .welcome .photo{max-width:460px;margin:0 auto;aspect-ratio:4/5}
+    .split .grid{grid-template-columns:1fr;gap:48px}
+    .gal-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:640px){
+    nav.main{position:absolute;top:74px;left:0;right:0;background:var(--cream);flex-direction:column;gap:0;padding:8px 0;border-bottom:1px solid var(--line);display:none}
+    nav.main.show{display:flex}
+    nav.main a{padding:14px 24px;width:100%;text-align:center;border-bottom:1px solid rgba(230,162,81,.15)}
+    .navcta{margin:10px 24px;width:calc(100% - 48px)}
+    .navtoggle{display:block}
+    .menu .menu-cols{column-count:1}
+    section{padding:58px 0}
+    .hero-inner{padding:62px 22px 70px}
+    .corner{width:32px;height:32px}
+    .corner.tl{top:16px;left:16px}.corner.tr{top:16px;right:16px}.corner.bl{bottom:16px;left:16px}.corner.br{bottom:16px;right:16px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap bar-inner">
+    <a class="brand" href="#top" aria-label="The Needham Nest home">
+      <img src="assets/logo.png" alt="The Needham Nest logo">
+      <span class="name">The Needham Nest<small>Needham Market</small></span>
+    </a>
+    <button class="navtoggle" aria-label="Open menu" aria-expanded="false" id="navBtn"><span></span><span></span><span></span></button>
+    <nav class="main" id="nav">
+      <a href="#menu">Menu</a><a href="#hours">Hours</a><a href="#find">Find Us</a>
+      <a class="navcta" href="#find">Visit</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top" style="padding:0">
+  <div class="hero-inner">
+    <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+    <img class="roundel" src="assets/logo.png" alt="The Needham Nest">
+    <div class="status open" id="statusPill"><span class="dot"></span><span id="statusText">Open now · until 4pm</span></div>
+    <div class="eyebrow">In the heart of Needham Market</div>
+    <h1>Now open in the<br>Old Town Hall</h1>
+    <p class="tagline">Coffee · Cake · Community</p>
+    <p class="lead">A warm welcome to the neighbourhood — proper barista coffee, hearty lunches and freshly made treats, in a building full of history.</p>
+    <div class="cta-row">
+      <a class="btn btn-gold" href="#menu">See the menu</a>
+      <a class="btn btn-ghost" href="#find">Find us</a>
+    </div>
+    <div class="hero-meta">
+      <div><b>Open 7 days</b> · 8am–4pm</div>
+      <div><b>The Old Town Hall</b> · Needham Market</div>
+      <div><b>IP6 8AL</b> · 01449 888008</div>
+    </div>
+  </div>
+</section>
+
+<section class="event-band" id="event">
+  <div class="wrap">
+    <div class="ev-txt">
+      <span class="ev-eyebrow">This Friday · book your place</span>
+      <h2>Smash Burger Night</h2>
+      <div class="ev-detail">Friday 31 July · 6–9pm · Smashed Burger £8, Double Smashed £10.50</div>
+    </div>
+    <a class="ev-cta" href="https://needhamnest.uk/smash-burger-night">Book your place →</a>
+  </div>
+</section>
+
+<section class="welcome">
+  <div class="wrap grid">
+    <div class="reveal">
+      <span class="eyebrow">A nest in the heart of the town</span>
+      <h2 style="color:var(--green)!important;font-size:clamp(1.8rem,3.5vw,2.4rem);margin:14px 0 18px">Freshly made, every day</h2>
+      <p>We're a family-run café that's found its home in Needham Market's Old Town Hall — a building that's stood at the centre of town life for generations. We hope to carry a little of that spirit forward: somewhere to meet a friend, settle in with a good coffee, or treat the little ones to a bubble waffle.</p>
+      <p>Everything's made with care, the kettle's always on, and there's a warm welcome whether you're a regular or just passing through.</p>
+      <div class="sig">Ben, Paul &amp; the Nest team<small>The Needham Nest</small></div>
+    </div>
+    <div class="photo reveal"><img src="assets/welcome-milkshakes.jpg" alt="A milkshake topped with cream at The Needham Nest"><span class="frame"></span></div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="flourish"><span>✦</span></div><span class="eyebrow" style="display:block;margin-top:16px">A taste of the Nest</span></div>
+    <div class="gal-grid reveal">
+      <figure><img src="assets/gallery-1-coffee-machine.jpg" alt="Barista espresso machine"><figcaption>Barista coffee</figcaption></figure>
+      <figure><img src="assets/gallery-2-cake.jpg" alt="Coffee and walnut cake"><figcaption>Fresh cakes</figcaption></figure>
+      <figure><img src="assets/gallery-3-bakes.jpg" alt="Counter display of scones, cookies and sausage rolls"><figcaption>Daily bakes</figcaption></figure>
+      <figure><img src="assets/gallery-4-pick-and-mix.jpg" alt="Jars of pick and mix sweets"><figcaption>Pick &amp; mix</figcaption></figure>
+      <figure><img src="assets/gallery-5-tray.jpg" alt="Milkshakes and a cheese scone on a tray"><figcaption>Eat in with us</figcaption></figure>
+      <figure><img src="assets/gallery-6-lemon-drizzle.jpg" alt="Lemon drizzle cake slices"><figcaption>Sweet treats</figcaption></figure>
+      <figure><img src="assets/gallery-7-iced-coffee.jpg" alt="Iced coffee in a mason jar"><figcaption>Iced drinks</figcaption></figure>
+      <figure><img src="assets/gallery-8-interior.jpg" alt="The café interior with its feature clock"><figcaption>Our space</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="flourish"><span>✦</span></div><span class="eyebrow" style="display:block;margin-top:16px">What's on</span><h2>Our Menu</h2></div>
+    <div class="kitchen-note reveal"><span class="star">✦</span> <strong>Hot food served daily, 10am–3pm</strong> — last orders at 2:45pm. Outside those hours there's always plenty to keep you going: sausage rolls, scones, cakes, cookies, ice cream and our pick &amp; mix.</div>
+    <div class="menu-cols"><div class="card reveal">
+      <span class="kicker">Hot Drinks</span>
+      <h3>Coffee &amp; Tea</h3>
+      <ul><li class="mli"><span class="i">Espresso</span><span class="dots"></span><span class="p">£2.60</span></li><li class="mli"><span class="i">Cortado</span><span class="dots"></span><span class="p">£2.90</span></li><li class="mli"><span class="i">Americano</span><span class="dots"></span><span class="p">£2.80</span></li><li class="mli"><span class="i">Cappuccino</span><span class="dots"></span><span class="p">£3.60</span></li><li class="mli"><span class="i">Flat White</span><span class="dots"></span><span class="p">£3.40</span></li><li class="mli"><span class="i">Latte</span><span class="dots"></span><span class="p">£3.60</span></li><li class="mli"><span class="i">Mocha</span><span class="dots"></span><span class="p">£3.40</span></li><li class="mli"><span class="i">Hot Chocolate</span><span class="dots"></span><span class="p">£3.90</span></li><li class="mli"><span class="i">Tea Selection <span class="note">Yorkshire or decaf</span></span><span class="dots"></span><span class="p">£1.80</span></li><li class="mli"><span class="i">Pot of Yorkshire Tea</span><span class="dots"></span><span class="p">£3.30</span></li></ul><div class="addon">Oat, almond or soya milk +£0.50 · Flavoured syrup +£0.50 · Cream &amp; marshmallows on hot chocolate +£0.60</div>
+    </div><div class="card reveal">
+      <span class="kicker">Speciality Teas</span>
+      <h3>Teapigs Blends<span class="cprice">£2.20</span></h3>
+      <p class="cintro">Premium blends, brewed with Teapigs.</p><ul><li class="mli np"><span class="i">English Breakfast</span></li><li class="mli np"><span class="i">Earl Grey</span></li><li class="mli np"><span class="i">Herbal Tea</span></li><li class="mli np"><span class="i">Green Tea</span></li></ul>
+    </div><div class="card reveal">
+      <span class="kicker">Cold Drinks &amp; Milkshakes</span>
+      <h3>Iced &amp; Cool</h3>
+      <ul><li class="mli"><span class="i">Soft drink on the pump <span class="note">Pepsi Max · lemonade · Tango</span></span><span class="dots"></span><span class="p">£2.50</span></li><li class="mli"><span class="i">Iced Latte</span><span class="dots"></span><span class="p">£3.80</span></li><li class="mli"><span class="i">Iced Mocha</span><span class="dots"></span><span class="p">£4.20</span></li><li class="mli"><span class="i">Iced Chocolate</span><span class="dots"></span><span class="p">£4.20</span></li><li class="mli"><span class="i">Squash <span class="note">kids 50p</span></span><span class="dots"></span><span class="p">£2.00</span></li><li class="mli"><span class="i">Apple Juice</span><span class="dots"></span><span class="p">£2.30</span></li><li class="mli"><span class="i">Orange Juice</span><span class="dots"></span><span class="p">£2.30</span></li><li class="mli"><span class="i">Milkshake <span class="note">chocolate · vanilla · strawberry</span></span><span class="dots"></span><span class="p">£4.95</span></li></ul><div class="addon">Oat, almond or soya milk +£0.50</div>
+    </div><div class="card reveal">
+      <span class="kicker">Mr Whippy &amp; Ice Cream</span>
+      <h3>Cool Treats</h3>
+      <ul><li class="mli"><span class="i">Waffle Cone <span class="note">with a flake</span></span><span class="dots"></span><span class="p">£3.75</span></li><li class="mli"><span class="i">Ice Cream Tub</span><span class="dots"></span><span class="p">£3.50</span></li></ul><div class="addon">Add a topping +£0.30 — sprinkles, marshmallows, Biscoff or Oreo</div>
+    </div><div class="card reveal">
+      <span class="kicker">Jacket Potatoes</span>
+      <h3>Hearty Jackets</h3>
+      <p class="cintro">Served with a salad garnish &amp; vinaigrette.</p><ul><li class="mli"><span class="i">Classic Butter (v)</span><span class="dots"></span><span class="p">£5.75</span></li><li class="mli"><span class="i">Classic Beans (v)</span><span class="dots"></span><span class="p">£7.50</span></li><li class="mli"><span class="i">Classic Cheese (v)</span><span class="dots"></span><span class="p">£7.50</span></li><li class="mli"><span class="i">Bacon &amp; Cheese</span><span class="dots"></span><span class="p">£7.50</span></li><li class="mli"><span class="i">Veggie Chilli (v)</span><span class="dots"></span><span class="p">£7.50</span></li><li class="mli"><span class="i">Chilli Con Carne</span><span class="dots"></span><span class="p">£8.95</span></li><li class="mli"><span class="i">Chicken Curry</span><span class="dots"></span><span class="p">£8.95</span></li></ul><div class="addon">Add crispy fried onions +£0.50 · extra cheese +£1.00</div>
+    </div><div class="card reveal">
+      <span class="kicker">Panini</span>
+      <h3>Pressed &amp; Toasted<span class="cprice">£7.50</span></h3>
+      <p class="cintro">Served with a salad garnish &amp; vinaigrette.</p><ul><li class="mli np"><span class="i">Ham &amp; Cheese</span></li><li class="mli np"><span class="i">Sausage &amp; Bacon</span></li><li class="mli np"><span class="i">Bacon, Cranberry &amp; Brie</span></li><li class="mli np"><span class="i">Tuna &amp; Cheese Melt</span></li><li class="mli np"><span class="i">Cheese &amp; Tomato (v)</span></li></ul><div class="addon">Add extra cheese to any panini +£1.00</div>
+    </div><div class="card reveal">
+      <span class="kicker">Savoury Crêpes</span>
+      <h3>Folded Warm<span class="cprice">£7.95</span></h3>
+      <ul><li class="mli np"><span class="i">Ham &amp; Cheese</span></li><li class="mli np"><span class="i">Bacon &amp; Maple Syrup</span></li><li class="mli np"><span class="i">Tuna Melt</span></li></ul>
+    </div><div class="card reveal">
+      <span class="kicker">Savoury Bites</span>
+      <h3>Quick Bites</h3>
+      <ul><li class="mli"><span class="i">Sausage Roll</span><span class="dots"></span><span class="p">£2.90</span></li><li class="mli"><span class="i">Crisps <span class="note">ask for today's flavours</span></span><span class="dots"></span><span class="p">£1.20</span></li></ul>
+    </div><div class="card reveal">
+      <span class="kicker">Sweet Crêpes</span>
+      <h3>Something Sweet</h3>
+      <ul><li class="mli"><span class="i">Classic Sugar &amp; Lemon</span><span class="dots"></span><span class="p">£5.00</span></li><li class="mli"><span class="i">Nutella</span><span class="dots"></span><span class="p">£5.50</span></li><li class="mli"><span class="i">Biscoff &amp; Crushed Biscuits</span><span class="dots"></span><span class="p">£6.00</span></li><li class="mli"><span class="i">Mixed Berries &amp; White Choc</span><span class="dots"></span><span class="p">£6.50</span></li></ul><div class="addon">Add Mr Whippy ice cream to any crêpe or waffle +£1.00</div>
+    </div><div class="card reveal">
+      <span class="kicker">Bubble Waffles</span>
+      <h3>Loaded Waffles<span class="cprice">£7.50</span></h3>
+      <p class="cintro">Crisp outside, fluffy centre — choose your style:</p><ul><li class="mli np"><span class="i">The Classic</span></li><li class="mli np"><span class="i">Choco-Licious</span></li><li class="mli np"><span class="i">Berry Burst</span></li><li class="mli np"><span class="i">Cookie Crumble</span></li><li class="mli np"><span class="i">S'mores Stack</span></li><li class="mli np"><span class="i">Banoffee Bliss</span></li></ul>
+    </div><div class="card reveal">
+      <span class="kicker">Cakes, Scones &amp; Cookies</span>
+      <h3>From the Counter</h3>
+      <ul><li class="mli"><span class="i">Fruit Scone</span><span class="dots"></span><span class="p">£3.50</span></li><li class="mli"><span class="i">Cheese Scone</span><span class="dots"></span><span class="p">£3.50</span></li><li class="mli"><span class="i">Cake Slice</span><span class="dots"></span><span class="p">£3.20</span></li><li class="mli"><span class="i">Banana Bread Slice</span><span class="dots"></span><span class="p">£3.20</span></li><li class="mli"><span class="i">Cookies</span><span class="dots"></span><span class="p">£2.50</span></li></ul><div class="addon">Add a pot of clotted cream &amp; jam to your scone +£1.00</div>
+    </div><div class="card reveal">
+      <span class="kicker">Pick &amp; Mix</span>
+      <h3>Fill Your Bag<span class="cprice">£1.50 / 100g</span></h3>
+      <p class="cintro">An old-fashioned pick &amp; mix — choose from the shelf and our team will weigh it for you.</p><ul></ul>
+    </div></div>
+    <p class="menu-note">Eat in or take away · Vegetarian options marked (v)</p>
+    <div class="allergen reveal">
+      <span class="kicker">Allergies &amp; Intolerances</span>
+      <p>If you have a food allergy or intolerance, please speak to a member of our team before you order — we're always happy to talk you through the ingredients in any dish. Our food is freshly prepared in a kitchen that handles the 14 named allergens (including gluten, milk, eggs, nuts, peanuts, soya, fish, crustaceans, molluscs, celery, mustard, sesame, lupin and sulphites), so while we take great care, we can't guarantee any item is completely free from traces.</p>
+      <a class="dl-btn" href="/needham-nest-allergens.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5l-5-5h3V4h4v6.5h3l-5 5zM5 18h14v2H5z"/></svg> Download allergen information (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<section class="split" id="hours">
+  <div class="wrap grid">
+    <div class="reveal">
+      <span class="eyebrow">When we're here</span><h2>Opening Hours</h2>
+      <div class="hours-list" id="hoursList">
+        <div class="row" data-day="1"><b>Monday</b><span>8:00am – 4:00pm</span></div>
+        <div class="row" data-day="2"><b>Tuesday</b><span>8:00am – 4:00pm</span></div>
+        <div class="row" data-day="3"><b>Wednesday</b><span>8:00am – 4:00pm</span></div>
+        <div class="row" data-day="4"><b>Thursday</b><span>8:00am – 4:00pm</span></div>
+        <div class="row" data-day="5"><b>Friday</b><span>8:00am – 4:00pm</span></div>
+        <div class="row" data-day="6"><b>Saturday</b><span>8:00am – 4:00pm</span></div>
+        <div class="row" data-day="0"><b>Sunday</b><span>8:00am – 4:00pm</span></div>
+      </div>
+      <p class="hours-note">Hot food 10am–3pm daily · last orders 2:45pm</p>
+      <div class="open-banner" id="openBanner"><span>✦</span> <span id="openBannerText">Open now — pop in and see us</span></div>
+    </div>
+    <div class="find reveal" id="find">
+      <span class="eyebrow">Come and find the nest</span><h2>Find Us</h2>
+      <address>The Old Town Hall<br>Needham Market<br>Ipswich, Suffolk<br>IP6 8AL</address>
+      <div class="tip">Tucked into the historic Old Town Hall — our signage is modest while we work with the planners, so look for the handsome old building right in the centre of town. You're in the right place.</div>
+      <div class="contact-row">
+        <div><span class="lbl">Call</span><a href="tel:+441449888008">01449 888008</a></div>
+        <div><span class="lbl">Email</span><a href="mailto:info@needhamnest.uk">info@needhamnest.uk</a></div>
+      </div>
+      <p class="visit-note">We're a small, cosy café, so we're not able to take table bookings — but there's almost always room to squeeze in. Just pop in and we'll look after you.</p>
+      <a class="btn btn-gold" href="https://www.google.com/maps/search/?api=1&amp;query=The+Old+Town+Hall+Needham+Market+IP6+8AL" target="_blank" rel="noopener">Open in Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<section class="follow reveal" id="follow">
+  <div class="wrap">
+    <div class="flourish"><span>✦</span></div>
+    <span class="eyebrow" style="display:block;margin-top:16px">Stay in touch</span>
+    <h2 style="color:var(--green)!important;font-size:clamp(1.9rem,4vw,2.6rem);margin:14px 0 0">Follow the Nest</h2>
+    <p class="lead">We share what's fresh, what's new and what's just out of the kitchen. Give us a follow, a like and a share — and help spread the word around Needham Market.</p>
+    <div class="social-cta">
+      <a class="sbtn solid" href="https://www.instagram.com/needhamnest/" target="_blank" rel="noopener" aria-label="Follow The Needham Nest on Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.05-.41-2.22-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.8c-3.15 0-3.5.01-4.74.07-.9.04-1.38.19-1.7.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.32-.28.8-.32 1.7-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.04.9.19 1.38.32 1.7.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.13.8.28 1.7.32 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c.9-.04 1.38-.19 1.7-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.32.28-.8.32-1.7.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.04-.9-.19-1.38-.32-1.7a2.85 2.85 0 0 0-.69-1.06 2.85 2.85 0 0 0-1.06-.69c-.32-.13-.8-.28-1.7-.32-1.24-.06-1.59-.07-4.74-.07zm0 3.06a4.98 4.98 0 1 1 0 9.96 4.98 4.98 0 0 1 0-9.96zm0 1.8a3.18 3.18 0 1 0 0 6.36 3.18 3.18 0 0 0 0-6.36zm5.18-.78a1.16 1.16 0 1 1-2.32 0 1.16 1.16 0 0 1 2.32 0z"/></svg>
+        Follow on Instagram
+      </a>
+      <a class="sbtn solid" href="https://www.facebook.com/NeedhamNest" target="_blank" rel="noopener" aria-label="Like The Needham Nest on Facebook">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
+        Like on Facebook
+      </a>
+      <button class="sbtn ghost" id="shareBtn" type="button" aria-label="Share The Needham Nest">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 1 0-3-3c0 .24.04.47.09.7L8.04 9.81A3 3 0 1 0 6 15a3 3 0 0 0 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65a2.92 2.92 0 1 0 2.92-2.92z"/></svg>
+        Share us
+      </button>
+    </div>
+    <span class="handle">@needhamnest</span>
+  </div>
+</section>
+
+<footer>
+  <img class="roundel" src="assets/logo.png" alt="The Needham Nest">
+  <div class="fname">The Needham Nest</div>
+  <div class="ftag">Coffee · Cake · Community</div>
+  <address>The Old Town Hall, Needham Market, Ipswich, Suffolk IP6 8AL<br>01449 888008 · info@needhamnest.uk · Open 7 days, 8am–4pm</address>
+  <div class="hygiene-img"><img src="assets/fhrs.png" alt="Food Hygiene Rating 5 - Very Good - Food Standards Agency"></div>
+  <div class="social">
+    <a href="https://www.facebook.com/NeedhamNest" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.instagram.com/needhamnest/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+  <p class="legal">Dogs are welcome at our outdoor seating — we just can't fit them inside our cosy space. © 2026 The Needham Nest. Made with care in Suffolk.</p>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('navBtn'),nav=document.getElementById('nav');
+  btn.addEventListener('click',function(){var o=nav.classList.toggle('show');btn.setAttribute('aria-expanded',o);});
+  nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('show');btn.setAttribute('aria-expanded',false);});});
+  var OPEN=8,CLOSE=16;
+  function refresh(){
+    var n=new Date(),h=n.getHours()+n.getMinutes()/60,isOpen=h>=OPEN&&h<CLOSE;
+    var pill=document.getElementById('statusPill'),txt=document.getElementById('statusText');
+    var banner=document.getElementById('openBanner'),bt=document.getElementById('openBannerText');
+    if(isOpen){pill.className='status open';txt.textContent='Open now · until 4pm';bt.textContent='Open now — pop in and see us';banner.style.display='inline-flex';}
+    else{pill.className='status closed';txt.textContent=h<OPEN?'Opens at 8am':'Closed now · opens 8am';bt.textContent='Closed just now — back at 8am';}
+    var today=n.getDay();
+    document.querySelectorAll('#hoursList .row').forEach(function(r){r.classList.toggle('now',parseInt(r.dataset.day,10)===today);});
+  }
+  refresh();setInterval(refresh,60000);
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  }else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});}
+  function toast(msg){var t=document.getElementById('toast');if(!t)return;t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2600);}
+  var sb=document.getElementById('shareBtn');
+  if(sb){sb.addEventListener('click',function(){
+    var data={title:'The Needham Nest',text:'Coffee · Cake · Community — The Needham Nest, Needham Market',url:'https://needhamnest.uk/'};
+    if(navigator.share){navigator.share(data).catch(function(){});}
+    else if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(data.url).then(function(){toast('Link copied — thank you for sharing!');}).catch(function(){toast('Share us at needhamnest.uk');});}
+    else{toast('Share us at needhamnest.uk');}
+  });}
+})();
+</script>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

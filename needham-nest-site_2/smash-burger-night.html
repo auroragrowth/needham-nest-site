@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smash Burger Night · The Needham Nest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+
+<div class="nn-bn">
+<style>
+.nn-bn{
+  --nn-green:#1A453B;
+  --nn-green-dk:#123029;
+  --nn-gold:#E6A251;
+  --nn-cream:#F7F0E0;
+  --nn-cream-dim:#EDE3CE;
+  font-family:'Lora',Georgia,serif;
+  color:var(--nn-cream);
+  background:var(--nn-green);
+  line-height:1.6;
+  padding:0;
+  margin:0 auto;
+  max-width:100%;
+  -webkit-font-smoothing:antialiased;
+}
+.nn-bn *,.nn-bn *::before,.nn-bn *::after{box-sizing:border-box;}
+.nn-bn__wrap{max-width:760px;margin:0 auto;padding:26px 22px 56px;}
+
+/* ---------- Header ---------- */
+.nn-bn__hero{position:relative;margin:0 0 28px;border-radius:2px;overflow:hidden;
+  background:var(--nn-green) url("assets/burger-hero.jpg") center 38% / cover no-repeat;}
+.nn-bn__hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,
+    rgba(26,69,59,.95) 0%,
+    rgba(26,69,59,.55) 17%,
+    rgba(26,69,59,.30) 34%,
+    rgba(26,69,59,.82) 52%,
+    rgba(26,69,59,.97) 66%,
+    rgba(26,69,59,1) 100%);}
+.nn-bn__hero-in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;
+  padding:30px 26px 34px;text-align:center;}
+.nn-bn__hero-gap{height:290px;}
+.nn-bn__hero .nn-bn__rule{margin:16px 0 14px;}
+.nn-bn__hero h1{margin:0;text-shadow:0 2px 14px rgba(10,30,25,.65);}
+.nn-bn__hero .nn-bn__logo{margin-bottom:0;}
+.nn-bn__logo{display:block;width:92px;height:92px;border-radius:50%;
+  box-shadow:0 0 0 2px var(--nn-gold),0 0 0 6px rgba(26,69,59,.9);}
+.nn-bn__prices{list-style:none;padding:0;margin:20px 0 0;width:100%;max-width:470px;}
+.nn-bn__prices li{display:flex;align-items:baseline;gap:12px;margin:0 0 9px;
+  font-family:'Playfair Display',Georgia,serif;font-size:1.22rem;color:var(--nn-cream);}
+.nn-bn__prices li::after{content:"";flex:1;order:2;height:1px;background:rgba(230,162,81,.45);}
+.nn-bn__prices li span{order:1;white-space:nowrap;}
+.nn-bn__prices li b{order:3;color:var(--nn-gold);font-weight:600;white-space:nowrap;}
+.nn-bn__credit{font-style:italic;font-size:.9rem;color:rgba(247,240,224,.8);margin:12px 0 0;}
+.nn-bn__sr{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+.nn-bn__sr{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+.nn-bn__eyebrow{font-family:'Lora',serif;font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--nn-gold);text-align:center;margin:0 0 12px;}
+.nn-bn h1{font-family:'Playfair Display',Georgia,serif;font-weight:600;color:var(--nn-cream);
+  font-size:clamp(2.1rem,7vw,3.2rem);line-height:1.08;text-align:center;margin:0 0 14px;}
+.nn-bn__when{text-align:center;font-size:1.08rem;color:var(--nn-cream-dim);margin:0 0 4px;}
+.nn-bn__when strong{color:var(--nn-gold);font-weight:600;}
+
+/* ---------- Gold rule ---------- */
+.nn-bn__rule{display:flex;align-items:center;justify-content:center;gap:12px;margin:30px 0;}
+.nn-bn__rule span{height:1px;width:76px;background:var(--nn-gold);opacity:.65;}
+.nn-bn__rule i{width:6px;height:6px;transform:rotate(45deg);background:var(--nn-gold);}
+
+/* ---------- Panels with deco brackets ---------- */
+.nn-bn__panel{position:relative;background:var(--nn-green-dk);padding:34px 26px;margin:0 0 26px;}
+.nn-bn__panel::before,.nn-bn__panel::after{content:"";position:absolute;width:26px;height:26px;
+  border:2px solid var(--nn-gold);opacity:.8;}
+.nn-bn__panel::before{top:10px;left:10px;border-right:0;border-bottom:0;}
+.nn-bn__panel::after{bottom:10px;right:10px;border-left:0;border-top:0;}
+.nn-bn__panel h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;color:var(--nn-gold);
+  font-size:1.5rem;margin:0 0 14px;text-align:center;}
+.nn-bn__panel p{margin:0 0 14px;color:var(--nn-cream-dim);}
+.nn-bn__panel p:last-child{margin-bottom:0;}
+
+/* ---------- Form ---------- */
+.nn-bn__field{margin:0 0 20px;}
+.nn-bn label{display:block;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--nn-gold);margin:0 0 8px;font-weight:500;}
+.nn-bn input[type=text],.nn-bn input[type=tel],.nn-bn select,.nn-bn textarea{
+  width:100%;font-family:'Lora',Georgia,serif;font-size:1rem;color:var(--nn-green);
+  background:var(--nn-cream);border:1px solid var(--nn-cream);border-radius:2px;
+  padding:13px 14px;appearance:none;-webkit-appearance:none;line-height:1.4;}
+.nn-bn textarea{resize:vertical;min-height:76px;}
+.nn-bn select{
+  background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%231A453B' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;background-size:12px;padding-right:38px;}
+.nn-bn input:focus,.nn-bn select:focus,.nn-bn textarea:focus{
+  outline:0;border-color:var(--nn-gold);box-shadow:0 0 0 3px rgba(230,162,81,.35);}
+.nn-bn__hint{font-size:.85rem;color:rgba(247,240,224,.65);margin:7px 0 0;}
+.nn-bn__hp{position:absolute!important;left:-9999px!important;height:0;overflow:hidden;}
+
+.nn-bn__btn{display:block;width:100%;font-family:'Playfair Display',Georgia,serif;font-weight:600;
+  font-size:1.12rem;letter-spacing:.05em;color:var(--nn-green);background:var(--nn-gold);
+  border:0;border-radius:2px;padding:16px 20px;cursor:pointer;transition:background .15s ease,transform .05s ease;}
+.nn-bn__btn:hover{background:#f0b268;}
+.nn-bn__btn:active{transform:translateY(1px);}
+.nn-bn__btn[disabled]{opacity:.55;cursor:not-allowed;}
+
+.nn-bn__msg{margin:18px 0 0;padding:13px 15px;border-radius:2px;font-size:.95rem;display:none;}
+.nn-bn__msg--err{display:block;background:rgba(200,70,55,.16);border:1px solid rgba(226,110,95,.75);color:#FFD9D2;}
+
+/* ---------- Success ---------- */
+.nn-bn__done{display:none;text-align:center;}
+.nn-bn__done h2{font-size:1.9rem;}
+.nn-bn__tick{width:62px;height:62px;margin:0 auto 16px;border-radius:50%;border:2px solid var(--nn-gold);
+  display:flex;align-items:center;justify-content:center;font-size:1.9rem;color:var(--nn-gold);line-height:1;}
+.nn-bn__recap{list-style:none;padding:0;margin:18px auto 0;max-width:330px;text-align:left;}
+.nn-bn__recap li{display:flex;justify-content:space-between;gap:16px;padding:9px 0;
+  border-bottom:1px solid rgba(230,162,81,.28);color:var(--nn-cream-dim);}
+.nn-bn__recap li:last-child{border-bottom:0;}
+.nn-bn__recap b{color:var(--nn-cream);font-weight:600;text-align:right;}
+
+/* ---------- Footer ---------- */
+.nn-bn__foot{text-align:center;font-size:.94rem;color:rgba(247,240,224,.78);}
+.nn-bn__foot a{color:var(--nn-gold);text-decoration:none;border-bottom:1px solid rgba(230,162,81,.45);}
+.nn-bn__foot a:hover{border-bottom-color:var(--nn-gold);}
+.nn-bn__foot p{margin:0 0 9px;}
+.nn-bn__sign{font-family:'Playfair Display',Georgia,serif;font-size:1.05rem;color:var(--nn-cream);margin-top:18px;}
+
+@media(max-width:520px){
+  .nn-bn__wrap{padding:16px 14px 44px;}
+  .nn-bn__panel{padding:30px 18px;}
+  .nn-bn__rule span{width:52px;}
+  .nn-bn__hero-gap{height:200px;}
+  .nn-bn__hero-in{padding:24px 18px 28px;}
+  .nn-bn__prices li{font-size:1.05rem;}
+}
+
+.nn-bn__order{margin:0 0 26px;padding:0 0 22px;border-bottom:1px solid rgba(230,162,81,.3);}
+.nn-bn__order h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;color:var(--nn-gold);font-size:1.15rem;margin:0 0 4px;}
+.nn-bn__osub{font-size:.85rem;color:rgba(247,240,224,.65);margin:0 0 14px;}
+.nn-bn__oline{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 0;}
+.nn-bn__oinfo{display:flex;flex-direction:column;}
+.nn-bn__oinfo span{color:var(--nn-cream);}
+.nn-bn__oinfo b{color:var(--nn-gold);font-weight:600;font-size:.92rem;}
+.nn-bn__stepper{display:flex;align-items:center;gap:14px;}
+.nn-bn__step{width:36px;height:36px;border-radius:50%;border:1px solid var(--nn-gold);background:transparent;color:var(--nn-gold);font-size:1.3rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s ease,color .15s ease;}
+.nn-bn__step:hover{background:var(--nn-gold);color:var(--nn-green);}
+.nn-bn__qty{min-width:20px;text-align:center;font-weight:700;color:var(--nn-cream);}
+.nn-bn__total{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;font-family:'Playfair Display',Georgia,serif;font-size:1.3rem;color:var(--nn-cream);}
+.nn-bn__total b{color:var(--nn-gold);}
+</style>
+</head>
+<body>
+
+<div class="nn-bn__wrap">
+
+  <div class="nn-bn__hero">
+    <div class="nn-bn__hero-in">
+      <img class="nn-bn__logo" alt="The Needham Nest" src="assets/burger-logo.png">
+      <div class="nn-bn__hero-gap"></div>
+      <p class="nn-bn__eyebrow">An evening at the Nest</p>
+      <h1>Smash Burger Night</h1>
+      <div class="nn-bn__rule"><span></span><i></i><span></span></div>
+      <p class="nn-bn__when"><strong>Friday 31 July</strong> &nbsp;&middot;&nbsp; 6pm &ndash; 9pm</p>
+      <ul class="nn-bn__prices">
+        <li><span>Smashed Burger</span><b>&pound;8.00</b></li>
+        <li><span>Double Smashed Burger</span><b>&pound;10.50</b></li>
+      </ul>
+      <p class="nn-bn__credit">Served with our homemade coleslaw &middot; Beef from Needham Market Quality Butchers</p>
+    </div>
+  </div>
+
+  <div class="nn-bn__panel">
+    <h2>Place your order</h2>
+    <p style="text-align:center">Pop your details in below and we'll have a table ready for you. It only takes a moment, and it helps us get the right amount of mince in.</p>
+
+    <form id="nnBnForm" novalidate style="margin-top:24px"><div class="nn-bn__order"><h3>Your order</h3><p class="nn-bn__osub">Served with homemade coleslaw. Beef from Needham Market Quality Butchers.</p><div class="nn-bn__oline"><div class="nn-bn__oinfo"><span>Smashed Burger</span><b>£8.00</b></div><div class="nn-bn__stepper"><button type="button" class="nn-bn__step" data-step="-1" data-item="smashed" aria-label="Fewer Smashed Burgers">–</button><span class="nn-bn__qty" data-qty="smashed">0</span><button type="button" class="nn-bn__step" data-step="1" data-item="smashed" aria-label="More Smashed Burgers">+</button></div></div><div class="nn-bn__oline"><div class="nn-bn__oinfo"><span>Double Smashed Burger</span><b>£10.50</b></div><div class="nn-bn__stepper"><button type="button" class="nn-bn__step" data-step="-1" data-item="double" aria-label="Fewer Double Smashed Burgers">–</button><span class="nn-bn__qty" data-qty="double">0</span><button type="button" class="nn-bn__step" data-step="1" data-item="double" aria-label="More Double Smashed Burgers">+</button></div></div><div class="nn-bn__total"><span>Total</span><b id="nnBnTotal">£0.00</b></div></div>
+
+      <div class="nn-bn__field">
+        <label for="nnName">Your name</label>
+        <input type="text" id="nnName" name="name" autocomplete="name" maxlength="80" required placeholder="e.g. Sarah Whitton">
+      </div>
+
+      <div class="nn-bn__field">
+        <label for="nnPhone">Contact number</label>
+        <input type="tel" id="nnPhone" name="phone" autocomplete="tel" maxlength="25" required placeholder="e.g. 07700 900123">
+        <p class="nn-bn__hint">Just so we can reach you if anything changes.</p>
+      </div>
+
+      <div class="nn-bn__field">
+        <label for="nnParty">How many eating?</label>
+        <select id="nnParty" name="party" required>
+          <option value="">Please choose…</option>
+          <option value="1">1 person</option>
+          <option value="2" selected>2 people</option>
+          <option value="3">3 people</option>
+          <option value="4">4 people</option>
+          <option value="5">5 people</option>
+          <option value="6">6 people</option>
+          <option value="7">7 people</option>
+          <option value="8">8 people</option>
+          <option value="9">9 people</option>
+          <option value="10">10 people</option>
+        </select>
+        <p class="nn-bn__hint">More than ten? Give us a ring on 01449 888008 and we'll sort it.</p>
+      </div>
+
+      <div class="nn-bn__field">
+        <label for="nnTime">What time suits you?</label>
+        <select id="nnTime" name="time" required>
+          <option value="">Please choose…</option>
+          <option value="18:00">6:00pm</option>
+          <option value="18:30">6:30pm</option>
+          <option value="19:00">7:00pm</option>
+          <option value="19:30">7:30pm</option>
+          <option value="20:00">8:00pm</option>
+          <option value="20:30">8:30pm</option>
+        </select>
+      </div>
+
+      <div class="nn-bn__field">
+        <label for="nnNotes">Anything we should know? <span style="text-transform:none;letter-spacing:0;opacity:.7">(optional)</span></label>
+        <textarea id="nnNotes" name="notes" maxlength="300" placeholder="Allergies, a high chair, a birthday…"></textarea>
+      </div>
+
+      <div class="nn-bn__hp" aria-hidden="true">
+        <label for="nnCompany">Company</label>
+        <input type="text" id="nnCompany" name="company" tabindex="-1" autocomplete="off">
+      </div>
+
+      <button type="submit" class="nn-bn__btn" id="nnBnBtn">Book my table</button>
+      <div class="nn-bn__msg" id="nnBnMsg" role="alert"></div>
+    </form>
+  </div>
+
+  <div class="nn-bn__panel nn-bn__done" id="nnBnDone">
+    <div class="nn-bn__tick">✓</div>
+    <h2>You're booked in</h2>
+    <p>Thank you — we've got you down and we're looking forward to it. There's no confirmation email, so do jot the details down.</p>
+    <ul class="nn-bn__recap" id="nnBnRecap"></ul>
+    <p style="margin-top:20px">Need to change or cancel? Ring us on <a href="tel:+441449888008" style="color:var(--nn-gold)">01449 888008</a>.</p>
+  </div>
+
+  <div class="nn-bn__rule"><span></span><i></i><span></span></div>
+
+  <div class="nn-bn__foot">
+    <p>The Old Town Hall, Needham Market, Ipswich, Suffolk IP6 8AL</p>
+    <p><a href="tel:+441449888008">01449 888008</a> &nbsp;·&nbsp; <a href="mailto:info@needhamnest.uk">info@needhamnest.uk</a></p>
+    <p>Got an allergy? Please tell us when you book, and have a look at our
+      <a href="/needham-nest-allergens.pdf" target="_blank" rel="noopener">allergen guide</a>.</p>
+    <p class="nn-bn__sign">Ben, Paul and the team 💚</p>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var KEY = "sb_publishable_2Hl1eX1_AV_6fcxfGC6hhg_CQ9undAD";
+  var CHECKOUT_FN = "https://ocjdwtbvdqedpeheiwfc.supabase.co/functions/v1/smash-burger-checkout";
+  var VERIFY_FN   = "https://ocjdwtbvdqedpeheiwfc.supabase.co/functions/v1/smash-burger-verify";
+  var PRICES = { smashed: 800, double: 1050 };
+
+  var form  = document.getElementById("nnBnForm");
+  var btn   = document.getElementById("nnBnBtn");
+  var msg   = document.getElementById("nnBnMsg");
+  var done  = document.getElementById("nnBnDone");
+  var panel = form ? form.closest(".nn-bn__panel") : null;
+  var recap = document.getElementById("nnBnRecap");
+
+  var qty = { smashed: 0, double: 0 };
+  function money(p){ return "\u00A3" + (p/100).toFixed(2); }
+  function total(){ return qty.smashed*PRICES.smashed + qty.double*PRICES.double; }
+  function updateUI(){
+    var t = total();
+    document.querySelectorAll("[data-qty]").forEach(function(el){ el.textContent = qty[el.getAttribute("data-qty")]; });
+    var tl = document.getElementById("nnBnTotal"); if(tl) tl.textContent = money(t);
+    if(btn) btn.textContent = t>0 ? ("Pay " + money(t)) : "Pay";
+  }
+  document.querySelectorAll("[data-step]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var k = b.getAttribute("data-item");
+      var d = parseInt(b.getAttribute("data-step"), 10);
+      qty[k] = Math.max(0, Math.min(20, qty[k] + d));
+      updateUI();
+    });
+  });
+  updateUI();
+
+  function fail(text){ if(!msg) return; msg.textContent = text; msg.className = "nn-bn__msg nn-bn__msg--err"; msg.style.display="block"; }
+  function clearFail(){ if(!msg) return; msg.textContent=""; msg.className="nn-bn__msg"; }
+
+  // ---- customer returning from the SumUp payment page ----
+  var ref = new URLSearchParams(location.search).get("ref");
+  if(ref && panel && done){
+    panel.style.display = "none";
+    done.style.display = "block";
+    var h = done.querySelector("h2");
+    var tick = done.querySelector(".nn-bn__tick");
+    if(h) h.textContent = "Checking your payment\u2026";
+    fetch(VERIFY_FN + "?ref=" + encodeURIComponent(ref), { headers:{ "apikey": KEY } })
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if(d && d.paid){
+          if(h) h.textContent = "You're booked in \u2014 and paid";
+          if(recap){
+            var oi = d.order_items || {};
+            var out = "";
+            if(d.customer_name) out += "<li>Name <b>" + String(d.customer_name).replace(/[<>&]/g,"") + "</b></li>";
+            if(d.booking_time)  out += "<li>Time <b>" + String(d.booking_time).slice(0,5) + "</b></li>";
+            if(oi.smashed) out += "<li>Smashed Burger <b>\u00D7" + oi.smashed + "</b></li>";
+            if(oi.double)  out += "<li>Double Smashed <b>\u00D7" + oi.double + "</b></li>";
+            if(d.amount_pence) out += "<li>Paid <b>" + money(d.amount_pence) + "</b></li>";
+            recap.innerHTML = out;
+          }
+        } else {
+          if(tick) tick.textContent = "!";
+          if(h) h.textContent = "Payment not received yet";
+          if(recap) recap.innerHTML = "<li style='text-align:center'>If you did pay, give it a moment and refresh this page. Otherwise you can <a href='" + location.pathname + "' style='color:var(--nn-gold)'>start again</a> or ring us on 01449&nbsp;888008.</li>";
+        }
+      })
+      .catch(function(){
+        if(h) h.textContent = "We couldn't check your payment";
+        if(recap) recap.innerHTML = "<li style='text-align:center'>Please ring us on 01449&nbsp;888008 and we'll confirm your booking.</li>";
+      });
+    return;
+  }
+
+  if(!form) return;
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    clearFail();
+    if(document.getElementById("nnCompany").value !== "") return; // honeypot
+
+    var name  = document.getElementById("nnName").value.trim();
+    var phone = document.getElementById("nnPhone").value.trim();
+    var party = document.getElementById("nnParty").value;
+    var time  = document.getElementById("nnTime").value;
+    var notes = document.getElementById("nnNotes").value.trim();
+
+    if(qty.smashed + qty.double < 1) return fail("Please add at least one burger to your order.");
+    if(name.length < 2)  return fail("Please pop your name in.");
+    if(!/^[0-9\s()+\-]{7,25}$/.test(phone)) return fail("That number doesn't look quite right \u2014 please check it.");
+    if(!party)           return fail("Please tell us how many are eating.");
+    if(!time)            return fail("Please choose a time.");
+
+    btn.disabled = true;
+    btn.textContent = "Taking you to payment\u2026";
+
+    fetch(CHECKOUT_FN, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "apikey": KEY },
+      body: JSON.stringify({
+        name: name, phone: phone, party_size: parseInt(party,10),
+        booking_time: time, notes: notes || null,
+        smashed: qty.smashed, double: qty.double,
+        company: document.getElementById("nnCompany").value
+      })
+    })
+    .then(function(r){ return r.json().then(function(d){ return { ok:r.ok, d:d }; }); })
+    .then(function(res){
+      if(res.ok && res.d && res.d.hosted_checkout_url){
+        window.location.href = res.d.hosted_checkout_url;
+      } else {
+        throw new Error(res.d && res.d.error ? res.d.error : "Sorry, that didn't go through.");
+      }
+    })
+    .catch(function(err){
+      btn.disabled = false;
+      updateUI();
+      fail((err && err.message) ? err.message : "Sorry \u2014 that didn't go through. Please try again, or ring us on 01449 888008.");
+    });
+  });
+})();
+</script>
+</div>
+</body>
+</html>
